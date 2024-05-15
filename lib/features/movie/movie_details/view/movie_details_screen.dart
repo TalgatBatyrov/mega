@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mega/app/routes/app_navigation.dart';
 import 'package:mega/features/movie/movie_details/cubit/movie_details_cubit.dart';
+import 'package:mega/features/movie/person/view/person_screen.dart';
 import 'package:mega/ui/colors/anar_colors.dart';
+import 'package:mega/ui/widgets/anar_details_loading.dart';
 import 'package:mega/ui/widgets/app_back_button.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
@@ -20,50 +22,21 @@ class MovieDetailsScreen extends StatelessWidget {
         body: BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
           builder: (context, state) {
             return state.maybeWhen(
-              orElse: () {
-                return const Center(child: Text('Initial'));
-              },
-              loading: () {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
+              orElse: () => const AnarDetailsLoading(),
+              loading: () => const AnarDetailsLoading(),
               success: (movieDetails) {
                 return ListView(
                   children: [
-                    if (movieDetails.poster?.url == null)
-                      const SizedBox(height: 40),
                     if (movieDetails.poster?.url != null)
-                      GestureDetector(
-                        onTap: () {
-                          context.push(
-                            AppNavigation.avatarScreen,
-                            extra: {
-                              'image': movieDetails.poster?.url,
-                              'tag': 'avatar',
-                            },
-                          );
-                        },
-                        child: Hero(
-                          tag: 'avatar',
-                          child: Container(
-                            width: double.infinity,
-                            height: MediaQuery.of(context).size.height * 0.3,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    movieDetails.poster?.url ?? ''),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
+                      PhotoWidget(
+                        photo: movieDetails.poster?.url ??
+                            movieDetails.poster?.previewUrl,
                       ),
                     const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             movieDetails.name ??

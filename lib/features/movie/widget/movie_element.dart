@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mega/app/routes/app_navigation.dart';
 import 'package:mega/features/movie/repository/model/movie_model.dart';
 import 'package:mega/ui/colors/anar_colors.dart';
+import 'package:mega/widgets/network_image_widget.dart';
 
 class MovieElement extends StatelessWidget {
-  const MovieElement({
-    super.key,
-    required this.movie,
-  });
-
   final MovieModel movie;
+
+  const MovieElement({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -23,43 +20,26 @@ class MovieElement extends StatelessWidget {
         );
       },
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Container(
-          //   margin: const EdgeInsets.only(bottom: 5),
-          //   padding: const EdgeInsets.all(8),
-          //   width: double.infinity,
-          //   height: 200,
-          //   decoration: BoxDecoration(
-          //     color: AnarColors.greyScale,
-          //     borderRadius: BorderRadius.circular(10),
-          //     image: DecorationImage(
-          //       fit: BoxFit.cover,
-          //       image: NetworkImage(
-          //         movie.poster?.url ??
-          //             'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
-          //       ),
-          //     ),
-          //   ),
-          // ),
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                movie.poster?.url ??
-                    movie.backdrop?.url ??
-                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
-                width: double.infinity,
-                height: 200,
-                fit: BoxFit.cover,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: SizedBox(
+              width: double.infinity,
+              height: 200,
+              child: NetworkImageWidget(
+                url: movie.poster?.url ?? movie.backdrop?.url,
               ),
             ),
           ),
+          const SizedBox(height: 5),
           Text(
-            movie.name ?? 'ssss',
+            movie.name ?? movie.alternativeName ?? movie.enName ?? '',
             style: const TextStyle(
-              color: AnarColors.white,
-              fontSize: 16,
+              color: AnarColors.textColor,
+              fontSize: 15,
               fontWeight: FontWeight.bold,
+              height: 0,
             ),
           ),
         ],

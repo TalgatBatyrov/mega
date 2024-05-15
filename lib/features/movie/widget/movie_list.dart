@@ -13,19 +13,17 @@ class MovieList extends StatelessWidget {
       child: BlocBuilder<MovieCubit, MovieState>(
         builder: (context, state) {
           return state.maybeWhen(
-            orElse: () {
-              return const Text('Initial');
-            },
+            orElse: () => const AnarLoading(),
             loading: () => const AnarLoading(),
             success: (movies) {
               return movies.isNotEmpty
                   ? GridView.builder(
-                      scrollDirection: Axis.horizontal,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 6,
                         crossAxisSpacing: 10,
+                        mainAxisExtent: 250,
                       ),
                       itemCount: movies.length,
                       itemBuilder: (context, index) {

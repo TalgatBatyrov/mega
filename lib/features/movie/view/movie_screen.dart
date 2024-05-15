@@ -27,8 +27,6 @@ class _MovieScreenState extends State<MovieScreen> {
                 MovieHeaderWidget(),
                 SizedBox(height: 20),
                 MovieList(),
-                SizedBox(height: 20),
-                Spacer(),
               ],
             ),
           ),
