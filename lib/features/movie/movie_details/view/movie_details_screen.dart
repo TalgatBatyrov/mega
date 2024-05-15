@@ -162,7 +162,7 @@ class MovieDetailsScreen extends StatelessWidget {
                             child: ListView.builder(
                               itemCount: movieDetails.persons!.length,
                               scrollDirection: Axis.horizontal,
-                              itemExtent: 100,
+                              itemExtent: 70,
                               itemBuilder: (context, index) {
                                 final person = movieDetails.persons![index];
                                 return GestureDetector(

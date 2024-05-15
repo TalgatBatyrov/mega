@@ -22,20 +22,47 @@ class MovieElement extends StatelessWidget {
           extra: movie.id.toString(),
         );
       },
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 5),
-        padding: const EdgeInsets.all(8),
-        width: double.infinity,
-        decoration: BoxDecoration(
-            color: AnarColors.greyScale,
-            borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(
+      child: Column(
+        children: [
+          // Container(
+          //   margin: const EdgeInsets.only(bottom: 5),
+          //   padding: const EdgeInsets.all(8),
+          //   width: double.infinity,
+          //   height: 200,
+          //   decoration: BoxDecoration(
+          //     color: AnarColors.greyScale,
+          //     borderRadius: BorderRadius.circular(10),
+          //     image: DecorationImage(
+          //       fit: BoxFit.cover,
+          //       image: NetworkImage(
+          //         movie.poster?.url ??
+          //             'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.network(
                 movie.poster?.url ??
+                    movie.backdrop?.url ??
                     'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+                width: double.infinity,
+                height: 200,
+                fit: BoxFit.cover,
               ),
-            )),
+            ),
+          ),
+          Text(
+            movie.name ?? 'ssss',
+            style: const TextStyle(
+              color: AnarColors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }

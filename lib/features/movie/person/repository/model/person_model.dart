@@ -21,6 +21,7 @@ abstract class PersonModel with _$PersonModel {
     required int? age,
     required String sex,
     required DateTime? birthday,
+    required List<ProfessionModel> facts,
   }) = _PersonModel;
 
   factory PersonModel.fromJson(Map<String, dynamic> json) =>

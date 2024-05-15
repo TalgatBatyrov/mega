@@ -31,6 +31,7 @@ mixin _$PersonModel {
   int? get age => throw _privateConstructorUsedError;
   String get sex => throw _privateConstructorUsedError;
   DateTime? get birthday => throw _privateConstructorUsedError;
+  List<ProfessionModel> get facts => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,7 +56,8 @@ abstract class $PersonModelCopyWith<$Res> {
       List<ActorMovies> movies,
       int? age,
       String sex,
-      DateTime? birthday});
+      DateTime? birthday,
+      List<ProfessionModel> facts});
 }
 
 /// @nodoc
@@ -82,6 +84,7 @@ class _$PersonModelCopyWithImpl<$Res, $Val extends PersonModel>
     Object? age = freezed,
     Object? sex = null,
     Object? birthday = freezed,
+    Object? facts = null,
   }) {
     return _then(_value.copyWith(
       isParse: freezed == isParse
@@ -128,6 +131,10 @@ class _$PersonModelCopyWithImpl<$Res, $Val extends PersonModel>
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      facts: null == facts
+          ? _value.facts
+          : facts // ignore: cast_nullable_to_non_nullable
+              as List<ProfessionModel>,
     ) as $Val);
   }
 }
@@ -151,7 +158,8 @@ abstract class _$$PersonModelImplCopyWith<$Res>
       List<ActorMovies> movies,
       int? age,
       String sex,
-      DateTime? birthday});
+      DateTime? birthday,
+      List<ProfessionModel> facts});
 }
 
 /// @nodoc
@@ -176,6 +184,7 @@ class __$$PersonModelImplCopyWithImpl<$Res>
     Object? age = freezed,
     Object? sex = null,
     Object? birthday = freezed,
+    Object? facts = null,
   }) {
     return _then(_$PersonModelImpl(
       isParse: freezed == isParse
@@ -222,6 +231,10 @@ class __$$PersonModelImplCopyWithImpl<$Res>
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      facts: null == facts
+          ? _value._facts
+          : facts // ignore: cast_nullable_to_non_nullable
+              as List<ProfessionModel>,
     ));
   }
 }
@@ -240,10 +253,12 @@ class _$PersonModelImpl implements _PersonModel {
       required final List<ActorMovies> movies,
       required this.age,
       required this.sex,
-      required this.birthday})
+      required this.birthday,
+      required final List<ProfessionModel> facts})
       : _profession = profession,
         _birthPlace = birthPlace,
-        _movies = movies;
+        _movies = movies,
+        _facts = facts;
 
   factory _$PersonModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PersonModelImplFromJson(json);
@@ -290,10 +305,17 @@ class _$PersonModelImpl implements _PersonModel {
   final String sex;
   @override
   final DateTime? birthday;
+  final List<ProfessionModel> _facts;
+  @override
+  List<ProfessionModel> get facts {
+    if (_facts is EqualUnmodifiableListView) return _facts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_facts);
+  }
 
   @override
   String toString() {
-    return 'PersonModel(isParse: $isParse, id: $id, name: $name, enName: $enName, photo: $photo, profession: $profession, birthPlace: $birthPlace, movies: $movies, age: $age, sex: $sex, birthday: $birthday)';
+    return 'PersonModel(isParse: $isParse, id: $id, name: $name, enName: $enName, photo: $photo, profession: $profession, birthPlace: $birthPlace, movies: $movies, age: $age, sex: $sex, birthday: $birthday, facts: $facts)';
   }
 
   @override
@@ -314,7 +336,8 @@ class _$PersonModelImpl implements _PersonModel {
             (identical(other.age, age) || other.age == age) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.birthday, birthday) ||
-                other.birthday == birthday));
+                other.birthday == birthday) &&
+            const DeepCollectionEquality().equals(other._facts, _facts));
   }
 
   @JsonKey(ignore: true)
@@ -331,7 +354,8 @@ class _$PersonModelImpl implements _PersonModel {
       const DeepCollectionEquality().hash(_movies),
       age,
       sex,
-      birthday);
+      birthday,
+      const DeepCollectionEquality().hash(_facts));
 
   @JsonKey(ignore: true)
   @override
@@ -359,7 +383,8 @@ abstract class _PersonModel implements PersonModel {
       required final List<ActorMovies> movies,
       required final int? age,
       required final String sex,
-      required final DateTime? birthday}) = _$PersonModelImpl;
+      required final DateTime? birthday,
+      required final List<ProfessionModel> facts}) = _$PersonModelImpl;
 
   factory _PersonModel.fromJson(Map<String, dynamic> json) =
       _$PersonModelImpl.fromJson;
@@ -386,6 +411,8 @@ abstract class _PersonModel implements PersonModel {
   String get sex;
   @override
   DateTime? get birthday;
+  @override
+  List<ProfessionModel> get facts;
   @override
   @JsonKey(ignore: true)
   _$$PersonModelImplCopyWith<_$PersonModelImpl> get copyWith =>

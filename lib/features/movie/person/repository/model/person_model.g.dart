@@ -27,6 +27,9 @@ _$PersonModelImpl _$$PersonModelImplFromJson(Map<String, dynamic> json) =>
       birthday: json['birthday'] == null
           ? null
           : DateTime.parse(json['birthday'] as String),
+      facts: (json['facts'] as List<dynamic>)
+          .map((e) => ProfessionModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$PersonModelImplToJson(_$PersonModelImpl instance) =>
@@ -42,4 +45,5 @@ Map<String, dynamic> _$$PersonModelImplToJson(_$PersonModelImpl instance) =>
       'age': instance.age,
       'sex': instance.sex,
       'birthday': instance.birthday?.toIso8601String(),
+      'facts': instance.facts,
     };

@@ -9,8 +9,8 @@ part of 'release_year_model.dart';
 _$ReleaseYearModelImpl _$$ReleaseYearModelImplFromJson(
         Map<String, dynamic> json) =>
     _$ReleaseYearModelImpl(
-      start: (json['start'] as num).toInt(),
-      end: (json['end'] as num).toInt(),
+      start: (json['start'] as num?)?.toInt(),
+      end: (json['end'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$ReleaseYearModelImplToJson(

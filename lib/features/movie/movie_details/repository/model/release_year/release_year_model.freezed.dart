@@ -20,8 +20,8 @@ ReleaseYearModel _$ReleaseYearModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReleaseYearModel {
-  int get start => throw _privateConstructorUsedError;
-  int get end => throw _privateConstructorUsedError;
+  int? get start => throw _privateConstructorUsedError;
+  int? get end => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $ReleaseYearModelCopyWith<$Res> {
           ReleaseYearModel value, $Res Function(ReleaseYearModel) then) =
       _$ReleaseYearModelCopyWithImpl<$Res, ReleaseYearModel>;
   @useResult
-  $Res call({int start, int end});
+  $Res call({int? start, int? end});
 }
 
 /// @nodoc
@@ -51,18 +51,18 @@ class _$ReleaseYearModelCopyWithImpl<$Res, $Val extends ReleaseYearModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? start = null,
-    Object? end = null,
+    Object? start = freezed,
+    Object? end = freezed,
   }) {
     return _then(_value.copyWith(
-      start: null == start
+      start: freezed == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
-              as int,
-      end: null == end
+              as int?,
+      end: freezed == end
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$ReleaseYearModelImplCopyWith<$Res>
       __$$ReleaseYearModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int start, int end});
+  $Res call({int? start, int? end});
 }
 
 /// @nodoc
@@ -89,18 +89,18 @@ class __$$ReleaseYearModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? start = null,
-    Object? end = null,
+    Object? start = freezed,
+    Object? end = freezed,
   }) {
     return _then(_$ReleaseYearModelImpl(
-      start: null == start
+      start: freezed == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
-              as int,
-      end: null == end
+              as int?,
+      end: freezed == end
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -114,9 +114,9 @@ class _$ReleaseYearModelImpl implements _ReleaseYearModel {
       _$$ReleaseYearModelImplFromJson(json);
 
   @override
-  final int start;
+  final int? start;
   @override
-  final int end;
+  final int? end;
 
   @override
   String toString() {
@@ -153,16 +153,16 @@ class _$ReleaseYearModelImpl implements _ReleaseYearModel {
 
 abstract class _ReleaseYearModel implements ReleaseYearModel {
   const factory _ReleaseYearModel(
-      {required final int start,
-      required final int end}) = _$ReleaseYearModelImpl;
+      {required final int? start,
+      required final int? end}) = _$ReleaseYearModelImpl;
 
   factory _ReleaseYearModel.fromJson(Map<String, dynamic> json) =
       _$ReleaseYearModelImpl.fromJson;
 
   @override
-  int get start;
+  int? get start;
   @override
-  int get end;
+  int? get end;
   @override
   @JsonKey(ignore: true)
   _$$ReleaseYearModelImplCopyWith<_$ReleaseYearModelImpl> get copyWith =>
