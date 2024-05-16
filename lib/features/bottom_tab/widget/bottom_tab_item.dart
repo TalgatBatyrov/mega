@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mega/ui/colors/anar_colors.dart';
+import 'package:mega/ui/colors/movie_colors.dart';
 
 class BottomTabItem extends StatelessWidget {
   final int index;
@@ -16,7 +16,7 @@ class BottomTabItem extends StatelessWidget {
       height: 45,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: AnarColors.textColor,
+        color: MovieColors.textColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(

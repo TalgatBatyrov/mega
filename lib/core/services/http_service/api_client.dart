@@ -18,19 +18,17 @@ class ApiClient {
   void _setupInterceptors() {
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
-        const token = 'ERYF86V-AE64AD7-JY5JW5P-BDRNFAT';
+        // ТОКЕН ДЛЯ ДОСТУПА К API
+        const token = 'CZ4J3FA-RY1MQBV-G0D178G-C11QRP2';
 
-        // Здесь вы можете добавить любые необходимые заголовки, например, для авторизации
         if (token.isNotEmpty) {
           options.headers['X-API-KEY'] = token;
         }
 
-        // Передаем управление следующему интерсептору или выполнению запроса
         return handler.next(options);
       },
       onResponse: (response, handler) {
         debugPrint('Response: ${response.data}');
-        // Передаем управление следующему интерсептору или обработчику ответа
         return handler.next(response);
       },
       onError: (DioException err, ErrorInterceptorHandler handler) async {
@@ -40,7 +38,6 @@ class ApiClient {
     ));
   }
 
-  /// baseOptions
   BaseOptions get baseOptions => BaseOptions(
         baseUrl: baseUrl,
         connectTimeout: const Duration(seconds: 15),
@@ -83,8 +80,6 @@ class ApiClient {
       final response = await _dio.post<dynamic>(
         endpoint,
         queryParameters: queryParameters,
-
-        /// If 415 code comes from api please change data format
         data: body,
         options: options,
       );
@@ -92,7 +87,6 @@ class ApiClient {
       _validateResponse(response);
 
       return response.data;
-      // return Map<String, dynamic>.from(response.data as Map);
     } on DioException catch (e) {
       _handleError(e);
     }

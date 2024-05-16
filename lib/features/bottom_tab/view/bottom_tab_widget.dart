@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mega/features/bottom_tab/bloc/bottom_tab_cubit.dart';
 import 'package:mega/features/bottom_tab/widget/bottom_tab_item.dart';
-import 'package:mega/features/menu/menu/view/menu_screen.dart';
-import 'package:mega/features/movie/view/movie_screen.dart';
-import 'package:mega/features/trainings/view/trainings_screen.dart';
-import 'package:mega/ui/colors/anar_colors.dart';
+import 'package:mega/features/favorites/view/favorites_screen.dart';
+import 'package:mega/features/movies/movie/view/movie_screen.dart';
+import 'package:mega/features/studio/view/studio_screen.dart';
+import 'package:mega/ui/colors/movie_colors.dart';
 
 class BottomTabWidget extends StatelessWidget {
   const BottomTabWidget({super.key});
@@ -18,18 +18,18 @@ class BottomTabWidget extends StatelessWidget {
       child: BlocBuilder<BottomTabCubit, int>(
         builder: (context, tabNumber) {
           return Scaffold(
-            backgroundColor: AnarColors.blackBackground,
+            backgroundColor: MovieColors.blackBackground,
             body: [
               const MovieScreen(),
-              const MenuScreen(),
-              const TrainingsScreen(),
+              const FavoritesScreen(),
+              const StudioScreen(),
             ].elementAt(tabNumber),
             bottomNavigationBar: Theme(
               data: Theme.of(context).copyWith(
                 splashColor: Colors.transparent,
               ),
               child: BottomNavigationBar(
-                backgroundColor: AnarColors.blackBackground,
+                backgroundColor: MovieColors.blackBackground,
                 currentIndex: tabNumber,
                 items: [
                   BottomNavigationBarItem(
